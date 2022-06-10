@@ -4,6 +4,7 @@
 <p align="center>
 ![screenshot](/assets/images/help-me-im-poor.webp "Gif")
 </p>
+
 ## Description
 A web application to help you not be poor and budget your money!
 
@@ -21,7 +22,8 @@ A web application to help you not be poor and budget your money!
 Clone or download the zip files from github. Install Node, in the root directory type NPM Install. You can use it on internet browser or download it to your phone.
 
 ## Usage
-![screenshot](/assets/images/screenshot.PNG "screenshot") 
+![screenshot](/assets/images/Capture.PNG "screenshot") 
+
 Click the link to the deployed website, add and subtract your expenses.
 
 ## License
