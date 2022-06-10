@@ -1,9 +1,9 @@
 # Help Me I'm Poor Budget Tracker </p>
 ![bad math](https://img.shields.io/badge/License-MIT-blue)
 
-<p align="center>
+
 <img src="https://giphy.com/embed/12JgIV6zAkYFbi" width="40" height="40" />
-</p>
+
 <!-- <div style="width:100%;height:0;padding-bottom:42%;position:relative;"><iframe src="https://giphy.com/embed/12JgIV6zAkYFbi" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/12JgIV6zAkYFbi">via GIPHY</a></p> -->
 
 ## Description
