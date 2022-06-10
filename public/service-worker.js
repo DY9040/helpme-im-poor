@@ -4,10 +4,11 @@ const CACHE_NAME = APP_PREFIX + VERSION;
 
 const FILES_TO_CACHE = [
     "/",
-    "./js/index.js",
-    "./manifest.json",
+    "./index.html",
     "./css/style.css",
     "./js/idb.js",
+    "./js/index.js",
+    "./manifest.json",
     "./icons/icon-512x512.png",
     "./icons/icon-384x384.png",
     "./icons/icon-192x192.png",
@@ -16,12 +17,11 @@ const FILES_TO_CACHE = [
     "./icons/icon-128x128.png",
     "./icons/icon-96x96.png",
     "./icons/icon-72x72.png",
-    "./index.html"
 ];
 
 
 
-self.addEventListener('install', function(e) {
+self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             console.log('installing cache : ' + CACHE_NAME);
@@ -49,17 +49,37 @@ self.addEventListener('activate', function(e) {
         );
 });
 
-self.addEventListener('fetch', function(e) {
-    console.log('fetch request : ' + e.request.url)
-    e.respondWith(
-        caches.match(e.request).then(function (request) {
-            if (request) {
-                console.log('responding with cache : ' + e.request.url)
-                return request
-            } else {
-                console.log('file is not cached, fetching : ' + e.request.url)
+self.addEventListener('fetch', function (e) {
+
+    if(e.request.url.includes("/api")) {
+        e.respondWith(
+            caches
+            .open(DATA_CACHE_NAME)
+            .then((cache) => {
                 return fetch(e.request)
-            }
+                .then((response) => {
+                    if(response.status === 200) {
+                        cache.put(e.request.url, response.clone());
+                    }
+                    return response;
+                })
+                .catch((err) => {
+                    return cache.match(e.request);
+                });
+            })
+            .catch((err) => console.error(err))
+        );
+        return;
+    }
+    e.respondWith(
+        fetch(e.request).catch(function () {
+            return caches.match(e.request).then(function (res) {
+                if (res) {
+                    return res;
+                } else if (e.request.headers.get("accept").includes("text/html")) {
+                    return caches.match("/");
+                }
+            });
         })
-    )
-})
+    );
+});
