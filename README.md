@@ -24,6 +24,7 @@ Clone or download the zip files from github. Install Node, in the root directory
 ![screenshot](/assets/images/Capture.PNG "screenshot") 
 
 Click the link to the deployed website, add and subtract your expenses.
+https://help-me-im-poor.herokuapp.com/
 
 ## License
 
